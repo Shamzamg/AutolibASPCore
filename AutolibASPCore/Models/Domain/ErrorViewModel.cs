@@ -1,6 +1,6 @@
 using System;
 
-namespace AutolibASPCore.Models
+namespace AutolibASPCore.Models.Domain
 {
     public class ErrorViewModel
     {

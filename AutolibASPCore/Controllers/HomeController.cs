@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AutolibASPCore.Models;
+using AutolibASPCore.Models.Domain;
 
 namespace AutolibASPCore.Controllers
 {
@@ -19,11 +19,6 @@ namespace AutolibASPCore.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
