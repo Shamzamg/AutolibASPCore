@@ -80,6 +80,10 @@ namespace AutolibASPCore.Models.Domain
 
                 entity.ToTable("client");
 
+                entity.HasIndex(e => e.Email)
+                    .HasName("email")
+                    .IsUnique();
+
                 entity.Property(e => e.IdClient)
                     .HasColumnName("idClient")
                     .HasColumnType("int(11)");
@@ -88,10 +92,24 @@ namespace AutolibASPCore.Models.Domain
                     .HasColumnName("date_naissance")
                     .HasColumnType("date");
 
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("email")
+                    .HasColumnType("varchar(255)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Nom)
                     .IsRequired()
                     .HasColumnName("nom")
                     .HasColumnType("varchar(45)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Passwd)
+                    .IsRequired()
+                    .HasColumnName("passwd")
+                    .HasColumnType("varchar(255)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 

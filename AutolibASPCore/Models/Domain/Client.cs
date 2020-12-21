@@ -15,6 +15,8 @@ namespace AutolibASPCore.Models.Domain
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public DateTime? DateNaissance { get; set; }
+        public string Email { get; set; }
+        public string Passwd { get; set; }
 
         public virtual ICollection<Reservation> Reservation { get; set; }
         public virtual ICollection<Utilise> Utilise { get; set; }

@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
   `date_naissance` date DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
   `passwd` varchar(255) NOT NULL,
   PRIMARY KEY (`idClient`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=401 ;
