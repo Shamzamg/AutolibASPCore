@@ -15,8 +15,14 @@ namespace AutolibASPCore.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [ActionName("Login")]
         [HttpPost]
-        public IActionResult Login(string email)
+        public IActionResult Login_post(dynamic form)
         {
             // var user = UserService.getOne(email);
             // if(user != null && Crypto.VerifyHashedPassword(user.Passwd, ))
