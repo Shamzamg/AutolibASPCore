@@ -1,5 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Under developpement";
+    ViewData["Title"] = "Sélection de la station";
 }
 
-<h1>Under developpement</h1>
+@if (Model != null)
+{
+    <div class="container text-center">
+        <div class="col-md-8 col-sm-8">
+            <h1 class="text-center">Liste des stations </h1>
+
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th> Ville</th>
+                        <th> Code postal</th>
+                        <th> Adresse</th>
+                        <th> Choix</th>
+                    </tr>
+                </thead>
+
+                @foreach (Station s in Model)
+                {
+                    <tr>
+                        <td>
+                            @s.Ville.ToString()
+                        </td>
+                        <td>
+                            @s.CodePostal.ToString()
+                        </td>
+                        <td>
+                            @(s.Numero.ToString() + " " + s.Adresse.ToString())
+                        </td>
+                        <td>
+                            @Html.ActionLink("Choisir", "Station", "Reserve", new { id = s.IdStation }, new { @class = "btn btn-default btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                    @Html.ActionLink("Retourner à l'accueil", "Index", "Home", new { @class = "btn btn-default btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
