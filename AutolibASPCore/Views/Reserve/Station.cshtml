@@ -1,5 +1,54 @@
 ﻿@{
-    ViewData["Title"] = "Under developpement";
+    ViewData["Title"] = "Choix du véhicule";
 }
 
-<h1>Under developpement</h1>
+@if (Model != null)
+{
+    <div class="container text-center">
+        <div class="col-md-8 col-sm-8">
+            <h1 class="text-center">Choisissez votre véhicule</h1>
+
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th> Borne</th>
+                        <th> Véhicule</th>
+                        <th> Catégorie</th>
+                        <th> Batterie</th>
+                        <th> Disponibilité</th>
+                        <th> Réserver</th>
+                    </tr>
+                </thead>
+
+                @foreach (StationData s in Model)
+                {
+                <tr>
+                    <td>
+                        @s.Borne.IdBorne.ToString()
+                    </td>
+                    <td>
+                        @s.TypeVehicule.TypeVehicule1.ToString()
+                    </td>
+                    <td>
+                        @s.TypeVehicule.Categorie.ToString()
+                    </td>
+                    <td>
+                        @s.Vehicule.EtatBatterie.ToString()
+                    </td>
+                    <td>
+                        @s.Vehicule.Disponibilite.ToString()
+                    </td>
+                    <td>
+                        @Html.ActionLink("Réserver", "Index", "Home", new { @class = "btn btn-default btn-primary" })
+                    </td>
+                </tr>
+                }
+            </table>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                    @Html.ActionLink("Retourner à la liste des stations", "StationsList", "Reserve", new { @class = "btn btn-default btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
