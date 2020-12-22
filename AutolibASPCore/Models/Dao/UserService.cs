@@ -15,8 +15,12 @@ namespace AutolibASPCore.Models.Dao
         {
             try
             {
+                /*
+                var reservations = (from c in context.Client join r in context.Reservation 
+                              on c.IdClient equals r.Client where c.Email == email select r);
+                */
                 return context.Client.First(c => c.Email == email);
-            } catch(Exception e)
+            } catch(Exception)
             {
                 throw new ServiceError("UserService.getOne()", "Unable to get client");
             }

@@ -15,20 +15,19 @@ namespace AutolibASPCore.Controllers
         {
             return View();
         }
-        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-        [ActionName("Login")]
         [HttpPost]
-        public IActionResult Login_post(dynamic form)
+        public IActionResult Login(string email, string passwd)
         {
-            // var user = UserService.getOne(email);
-            // if(user != null && Crypto.VerifyHashedPassword(user.Passwd, ))
-            // var hash = Crypto.HashPassword("d6506c7bcf0d483354d2eca58ed6611ea11a134a13e7d1940b3ce549ec024943");
-            // Crypto.VerifyHashedPassword(hash, "test");
-            // UserService.getInstance().getOne();
+            var user = UserService.getOne(email);
+            if (user != null && Crypto.VerifyHashedPassword(user.Passwd, passwd))
+            {
+                // Log user
+                return RedirectToAction(controllerName: "Home", actionName: "Index");
+            }
 
             return View();
         }
