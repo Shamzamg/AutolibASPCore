@@ -330,6 +330,7 @@ CREATE TABLE IF NOT EXISTS `type_vehicule` (
   `idType_vehicule` int(11) NOT NULL AUTO_INCREMENT,
   `categorie` varchar(45) NOT NULL,
   `type_vehicule` varchar(45) NOT NULL,
+  `image_vehicule` varchar(45) NOT NULL,
   PRIMARY KEY (`idType_vehicule`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
@@ -337,15 +338,15 @@ CREATE TABLE IF NOT EXISTS `type_vehicule` (
 -- Contenu de la table `type_vehicule`
 --
 
-INSERT INTO `type_vehicule` (`idType_vehicule`, `categorie`, `type_vehicule`) VALUES
-(1, 'Petite citadine', 'Citroën C1'),
-(2, 'Petite citadine', 'Toyota Aygo'),
-(3, 'Utilitaire', 'Citroën Berlingo'),
-(4, 'Utilitaire', 'Citroën Berlingo PRM'),
-(5, 'Utilitaire', 'Nissan Evalia'),
-(6, 'Compacte', 'Toyota Yaris'),
-(7, 'Familliale', 'C4 Piccaso'),
-(8, 'Familliale', 'Toyota Verso');
+INSERT INTO `type_vehicule` (`idType_vehicule`, `categorie`, `type_vehicule`, `image_vehicule`) VALUES
+(1, 'Petite citadine', 'Citroën C1', '~/images/citroenc1.png'),
+(2, 'Petite citadine', 'Toyota Aygo', '~/images/toyotaaygo.png'),
+(3, 'Utilitaire', 'Citroën Berlingo', '~/images/citroenberlingo.png'),
+(4, 'Utilitaire', 'Citroën Berlingo PRM', '~/images/citroenberlingo.png'),
+(5, 'Utilitaire', 'Nissan Evalia', '~/images/nissanevalia.png'),
+(6, 'Compacte', 'Toyota Yaris', '~/images/toyotayaris.png'),
+(7, 'Familliale', 'C4 Picasso', '~/images/c4picasso.png'),
+(8, 'Familliale', 'Toyota Verso', '~/images/toyotaverso.png');
 
 -- --------------------------------------------------------
 

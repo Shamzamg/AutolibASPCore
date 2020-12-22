@@ -4,11 +4,11 @@
 
 @if (Model != null)
 {
-    <div class="container text-center">
+    <div class="container d-flex justify-content-center">
         <div class="col-md-8 col-sm-8">
             <h1 class="text-center">Choisissez votre véhicule</h1>
 
-            <table class="table table-bordered table-striped table-responsive">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th> Borne</th>
@@ -39,14 +39,14 @@
                         @s.Vehicule.Disponibilite.ToString()
                     </td>
                     <td>
-                        @Html.ActionLink("Réserver", "Index", "Home", new { @class = "btn btn-default btn-primary" })
+                        @Html.ActionLink("Réserver", "Index", "Home", null, new { @class = "btn btn-default btn-primary" })
                     </td>
                 </tr>
                 }
             </table>
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    @Html.ActionLink("Retourner à la liste des stations", "StationsList", "Reserve", new { @class = "btn btn-default btn-primary" })
+                    @Html.ActionLink("Retourner à la liste des stations", "StationsList", "Reserve", null, new { @class = "btn btn-default btn-primary" })
                 </div>
             </div>
         </div>
