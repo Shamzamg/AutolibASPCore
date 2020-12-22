@@ -1,0 +1,51 @@
+﻿@model List<MapStationData>
+@using System.Text.Json;
+@{
+    ViewData["Title"] = "Carte";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="map" style="width: 500px; height: 500px">
+    </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK-YJuIUMrCxuUQwEAUN_jHkQK2yyJTsM"></script>
+    <script type="text/javascript">
+
+        var markers = @Html.Raw(JsonSerializer.Serialize(Model));
+
+        console.log(markers);
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: new google.maps.LatLng(markers[0].Latitude, markers[0].Longitude),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < markers.length; i++) {
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(markers[i].Latitude, markers[i].Longitude),
+                map: map
+            });
+
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(markers[i].Vehicules.reduce((d,v) => d + '<p>' + v.ModelVehicule + '</p>', ''));
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+
+    </script>
+</body>
+</html>
