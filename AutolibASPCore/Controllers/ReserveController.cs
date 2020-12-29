@@ -24,8 +24,7 @@ namespace AutolibASPCore.Controllers
         public IActionResult Station(int id)
         {
             ViewBag.ID = id;
-            List<StationData> listeStations = ReserveService.getStationData(id);
-            return View(listeStations);
+            return View(null);
         }
         public IActionResult Reserve()
         {
