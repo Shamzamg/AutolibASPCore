@@ -5,6 +5,7 @@ namespace AutolibASPCore.Models.Domain
 {
     public partial class MapStationData
     {
+        public int IdStation { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public string Adresse { get; set; }

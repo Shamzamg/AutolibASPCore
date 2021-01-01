@@ -16,10 +16,16 @@ namespace AutolibASPCore.Models.Dao
             try
             {
                 var listeMarkers = (from s in context.Station 
-                                     select new MapStationData() {Adresse = s.Adresse, Latitude = s.Latitude, Longitude = s.Longitude, 
-                                         Vehicules = ( from v in context.Vehicule join b in context.Borne on v.IdVehicule equals b.IdVehicule
-                                                       join t in context.TypeVehicule on v.TypeVehicule equals t.IdTypeVehicule where b.Station == s.IdStation 
-                                                       select new MapStationVehicule() {ModelVehicule = t.TypeVehicule1}).ToList()
+                                     select new MapStationData() {
+                                         IdStation = s.IdStation, Adresse = s.Adresse, Latitude = s.Latitude, Longitude = s.Longitude, 
+                                         Vehicules = ( from v in context.Vehicule 
+                                             join b in context.Borne on v.IdVehicule equals b.IdVehicule
+                                             join t in context.TypeVehicule on v.TypeVehicule equals t.IdTypeVehicule 
+                                             where b.Station == s.IdStation 
+                                             select new MapStationVehicule() { 
+                                                 IdType = t.IdTypeVehicule, ModelVehicule = t.TypeVehicule1
+                                             }
+                                         ).ToList()
                                      });
                 return listeMarkers.ToList();
             } 

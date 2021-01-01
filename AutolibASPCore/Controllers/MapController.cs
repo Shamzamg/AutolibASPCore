@@ -11,10 +11,15 @@ namespace AutolibASPCore.Controllers
 {
     public class MapController : Controller
     {
-        public IActionResult City()
+        public IActionResult Index()
         {
-            List<MapStationData> markers = MapService.getStationsData();
-            return View(markers);
+            List<MapStationData> stations = MapService.getStationsData();
+            return View(stations);
+        }
+        public IActionResult City(string id)
+        {
+            List<MapStationData> stations = MapService.getStationsData();
+            return View(stations);
         }
     }
 }

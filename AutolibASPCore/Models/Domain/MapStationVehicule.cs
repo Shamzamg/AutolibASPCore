@@ -5,6 +5,7 @@ namespace AutolibASPCore.Models.Domain
 {
     public partial class MapStationVehicule
     {
+        public int IdType { get; set; }
         public string ModelVehicule { get; set; }
     }
 }
