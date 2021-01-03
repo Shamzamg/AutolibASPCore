@@ -15,14 +15,27 @@ namespace AutolibASPCore.Models.Dao
         {
             try
             {
-                /*
-                var reservations = (from c in context.Client join r in context.Reservation 
-                              on c.IdClient equals r.Client where c.Email == email select r);
-                */
-                return context.Client.First(c => c.Email == email);
+                return context.Client.FirstOrDefault(c => c.Email == email);
             } catch(Exception)
             {
                 throw new ServiceError("UserService.getOne()", "Unable to get client");
+            }
+        }
+        public static void addOne(string email, string passwd, string firstname, string lastname, DateTime birthdate)
+        {
+            try
+            {
+                var client = new Client { 
+                    Email = email, Passwd = passwd, 
+                    Nom = lastname, Prenom = firstname, 
+                    DateNaissance = birthdate, 
+                };
+                context.Add(client);
+                context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new ServiceError("UserService.getOne()", "Unable to add client");
             }
         }
     }

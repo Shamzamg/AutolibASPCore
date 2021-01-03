@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,13 +21,13 @@
                 <ul class="navbar-nav flex-grow-1">
                     <!-- <li class="nav-item dropdown mx-2 active">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false" role="button">STATIONS</a>
+                            aria-expanded="false" role="button">STATIONS</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item nav-link text-dark"
-                                   asp-area="" asp-controller="Map" asp-action="City" asp-route-id="Lyon">Lyon</a>
+                                    asp-area="" asp-controller="Map" asp-action="City" asp-route-id="Lyon">Lyon</a>
                                 <a class="dropdown-item nav-link text-dark"
-                                   asp-area="" asp-controller="Map" asp-action="City" asp-route-id="Paris">Paris</a>
+                                    asp-area="" asp-controller="Map" asp-action="City" asp-route-id="Paris">Paris</a>
                             </li>
                         </ul>
                     </li> -->
@@ -34,13 +36,24 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav flex-row ml-auto d-flex">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">CONNEXION</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="btn btn-outline-primary" asp-area="" asp-controller="User" asp-action="Register">INSCRIPTION</a>
-                    </li>
+                    @if (ViewContext.HttpContext.Session.GetString("user") == null)
+                    {
+                        <li class="nav-item mx-2 @Html.Raw((string)ViewContext.RouteData.Values["controller"] == "User" &&
+                                            (string)ViewContext.RouteData.Values["action"] == "Login" ? "active" : "")">
+                            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">CONNEXION</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="btn btn-outline-primary" asp-area="" asp-controller="User" asp-action="Register">INSCRIPTION</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item mx-2">
+                            <a class="btn btn-outline-secondary" asp-area="" asp-controller="User" asp-action="Logout">DECONNEXION</a>
+                        </li>
+                    }
                 </ul>
+
             </div>
         </nav>
     </header>

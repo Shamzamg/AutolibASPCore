@@ -1,5 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Under developpement";
+﻿@model UserAuthCode?
+@{
+    ViewData["Title"] = "Inscription";
+
+    string? errMsg = null;
+    if(Model != null)
+    {
+        switch(Model)
+        {
+            case UserAuthCode.USER_ALREADY_EXISTS:
+                errMsg = "L'utilisateur existe déjà";
+                break;
+            case UserAuthCode.BAD_EMAIL_FORMAT:
+                errMsg = "Mauvais format d'email";
+                break;
+            case UserAuthCode.BAD_PASSWORD_FORMAT:
+                errMsg = "Mauvais format de mot de passe";
+                break;
+            case UserAuthCode.NO_BIRTHDATE:
+                errMsg = "Veuillez entrer votre date de naissance";
+                break;
+            case UserAuthCode.NO_FIRSTNAME:
+                errMsg = "Veuillez entrer votre prénom";
+                break;
+            case UserAuthCode.NO_LASTNAME:
+                errMsg = "Veuillez entrer votre nom de famille";
+                break;
+        }
+    }
 }
 
-<h1>Under developpement</h1>
+<h1>Inscription</h1>
+<form method="post">
+    <input type="email" name="email" />
+    <input type="text" name="firstname" />
+    <input type="text" name="lastname" />
+    <input type="date" name="birthdate" />
+    <input type="password" name="passwd" />
+
+    <input type="submit" value="Register" />
+
+    @if (errMsg != null)
+    {
+        <p>@errMsg</p>
+    }
+</form>
