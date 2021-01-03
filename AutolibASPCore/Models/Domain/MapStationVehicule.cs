@@ -7,5 +7,7 @@ namespace AutolibASPCore.Models.Domain
     {
         public int IdType { get; set; }
         public string ModelVehicule { get; set; }
+
+        public string Disponibilite { get; set; }
     }
 }

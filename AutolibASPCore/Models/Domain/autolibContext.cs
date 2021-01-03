@@ -28,7 +28,7 @@ namespace AutolibASPCore.Models.Domain
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;port=3306;user=userepul;password=epul;database=autolib", x => x.ServerVersion("10.4.16-mariadb"));
+                optionsBuilder.UseMySql("server=localhost;port=3306;user=userepul;password=epul;database=autolib", x => x.ServerVersion("10.4.14-mariadb"));
             }
         }
 
@@ -217,6 +217,13 @@ namespace AutolibASPCore.Models.Domain
                 entity.Property(e => e.Categorie)
                     .IsRequired()
                     .HasColumnName("categorie")
+                    .HasColumnType("varchar(45)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.ImageVehicule)
+                    .IsRequired()
+                    .HasColumnName("image_vehicule")
                     .HasColumnType("varchar(45)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");

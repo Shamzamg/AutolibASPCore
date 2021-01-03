@@ -90,3 +90,39 @@ body {
     font-family: Roboto, sans-serif;
     font-size: 14px;
 }
+
+/* Register & Connexion styles
+------------------------------------------------ */
+
+
+.register, .connexion {
+    color: rgb(0, 0, 0);
+    background: #fff7e8;
+    padding: 15px;
+    top: 50%;
+    left: 50%;
+    border-radius: 12px;
+    margin-top: 15%;
+}
+
+.registerContainer, .connexionContainer {
+    text-align: center;
+    overflow: auto;
+    margin: auto;
+}
+
+/* Reserve/Car styles
+------------------------------------------------ */
+
+.returnButton{
+    margin-top: 25%;
+    text-align: right;
+}
+
+/* Station carousel styles
+------------------------------------------------ */
+
+img{
+    width: 150px;
+    height: auto;
+}

@@ -1,11 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Under developpement";
+﻿@model UserAuthCode?
+@{
+    ViewData["Title"] = "Connexion";
+
+    string? errMsg = null;
+    if (Model != null)
+    {
+        switch (Model)
+        {
+            case UserAuthCode.USER_NOT_EXISTS:
+                errMsg = "L'utilisateur n'existe pas";
+                break;
+            case UserAuthCode.WRONG_PASSWORD:
+                errMsg = "Mot de passe incorrect";
+                break;
+        }
+    }
 }
 
-<h1>Login</h1>
-<form method="post">
-    <input type="email" name="email" />
-    <input type="password" name="passwd" />
+<div class="connexion">
 
-    <input type="submit" value="Login" />
-</form>
+    <div class="connexionContainer">
+
+        <h1>Connexion</h1>
+
+        <form name="connexion" method="post">
+
+            <p>
+                Mail:<br />
+                <input type="email" name="email" required />
+            </p>
+
+            <p>
+                Password:<br />
+                <input type="password" name="passwd" required />
+            </p>
+
+            <button type="submit" class="btn btn-warning">Login</button>
+
+            @if (errMsg != null)
+            {
+                <p>@errMsg</p>
+            }
+
+        </form>
+
+    </div>
+</div>
+

@@ -23,7 +23,7 @@ namespace AutolibASPCore.Models.Dao
                                              join t in context.TypeVehicule on v.TypeVehicule equals t.IdTypeVehicule 
                                              where b.Station == s.IdStation 
                                              select new MapStationVehicule() { 
-                                                 IdType = t.IdTypeVehicule, ModelVehicule = t.TypeVehicule1
+                                                 IdType = t.IdTypeVehicule, ModelVehicule = t.TypeVehicule1, Disponibilite = v.Disponibilite
                                              }
                                          ).ToList()
                                      });

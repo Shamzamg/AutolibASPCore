@@ -7,9 +7,9 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK-YJuIUMrCxuUQwEAUN_jHkQK2yyJTsM"></script>
     <script type="text/javascript">
         var stations = @Html.Raw(JsonSerializer.Serialize(Model));
-        var stationsHref = @Html.Raw(JsonSerializer.Serialize(Model.Select(s => Url.Action("Reserve", "Station", new { id = s.IdStation }))));
+        var stationsHref = @Html.Raw(JsonSerializer.Serialize(Model.Select(s => Url.Action("Station", "Reserve", new { id = s.IdStation }))));
     </script>
     <script type="text/javascript" src="~/js/map.js"></script>
 }
 
-<div id="map"></div>
+<div id="map" style="width: 100%;"></div>
