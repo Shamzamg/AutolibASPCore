@@ -32,7 +32,20 @@ namespace AutolibASPCore.Controllers
 
             List<VehiculeInfo> vehicules = ReserveService.getVehiculesLibresStation(id);
 
-            return View(vehicules);
+            List<VehiculeInfo> vehiculesFiltered = new List<VehiculeInfo>();
+            List<string> typeVehicules = new List<string>();
+
+            foreach(VehiculeInfo vehicule in vehicules)
+            {
+                string typeVehicule = vehicule.TypeVehicule;
+
+                if(!typeVehicules.Contains(typeVehicule)){
+                    typeVehicules.Add(typeVehicule);
+                    vehiculesFiltered.Add(vehicule);
+                }
+            }
+
+            return View(vehiculesFiltered);
         }
         public IActionResult Reserve()
         {

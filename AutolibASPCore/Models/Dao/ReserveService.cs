@@ -25,15 +25,16 @@ namespace AutolibASPCore.Models.Dao
             }
         }
 
-        public static List<VehiculeInfo> getVehiculesLibresStation(int id)
+        public static List <VehiculeInfo> getVehiculesLibresStation(int id)
         {
             try
             {
                 var vehicules = (from s in context.Station
                                  join b in context.Borne on s.IdStation equals b.Station
-                                 join v in context.Vehicule on b.IdVehicule equals v.IdVehicule
+                                 join v in context.Vehicule  on b.IdVehicule equals v.IdVehicule
                                  join t in context.TypeVehicule on v.TypeVehicule equals t.IdTypeVehicule
                                  where s.IdStation == id && v.Disponibilite == "LIBRE"
+
                                  select new VehiculeInfo()
                                  {
                                      Categorie = t.Categorie,
@@ -41,7 +42,8 @@ namespace AutolibASPCore.Models.Dao
                                      EtatBatterie = v.EtatBatterie,
                                      TypeVehicule = t.TypeVehicule1,
                                      IdVehicule = v.IdVehicule
-                                 }) ;
+                                 });
+
                 return vehicules.ToList();
             }
             catch (Exception e)

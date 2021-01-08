@@ -5,47 +5,24 @@
 
 @if (Model != null)
 {
-    <div class="container d-flex justify-content-center">
-        <div class="col-md-8 col-sm-8">
-            <h1 class="text-center">Choisissez votre véhicule</h1>
+    <h1 class="text-center">Choisissez votre véhicule</h1>
+    <div class="row justify-content-center">
 
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th> Image</th>
-                        <th> Type</th>
-                        <th> Catégorie</th>
-                        <th> Batterie</th>
-                        <th> Réserver</th>
-                    </tr>
-                </thead>
-
-                @foreach (var v in Model)
-                {
-                    <tr>
-                        <td>
-                            @v.ImageVehicule.ToString()
-                        </td>
-                        <td>
-                            @v.TypeVehicule.ToString()
-                        </td>
-                        <td>
-                            @v.Categorie.ToString()
-                        </td>
-                        <td>
-                            @v.EtatBatterie.ToString()
-                        </td>
-                        <td>
-                            @Html.ActionLink("Réserver", "Car", "Reserve", new {id= v.IdVehicule}, new { @class = "btn btn-default btn-primary" })
-                        </td>
-                    </tr>
-                }
-            </table>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    @Html.ActionLink("Retourner à la liste des stations", "Index", "Map", null, new { @class = "btn btn-default btn-primary" })
-                </div>
+        @foreach (var v in Model)
+        {
+        <div class="col-sm-auto">
+            <a href="@Url.Action("Car","Reserve", new { id = v.IdVehicule })" id="@v.IdVehicule">
+                <img src="@Url.Content(v.ImageVehicule)" />
+            </a>
+            <div class="carousel-image-title">
+                <h5>@v.TypeVehicule</h5>
             </div>
         </div>
+        }
+
+    </div>
+
+    <div class="returnButton">
+            @Html.ActionLink("Retourner à la liste des stations", "Index", "Map", null, new { @class = "btn btn-default btn-primary" })
     </div>
 }
