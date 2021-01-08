@@ -31,12 +31,11 @@ namespace AutolibASPCore.Controllers
         {
             return View(null);
         }
-
         [HttpPost]
         public IActionResult Register(string email, string passwd, string firstname, string lastname, string birthdate)
         {
             UserAuthCode code = register(email, passwd, firstname, lastname, birthdate);
-            if(code == UserAuthCode.SUCCESS)
+            if (code == UserAuthCode.SUCCESS)
             {
                 return redirectOnLogged();
             }
@@ -62,7 +61,7 @@ namespace AutolibASPCore.Controllers
         }
         private UserAuthCode login(string email, string passwd)
         {
-            if(!isEmailValid(email))
+            if (!isEmailValid(email))
             {
                 return UserAuthCode.USER_NOT_EXISTS;
             }
@@ -71,13 +70,15 @@ namespace AutolibASPCore.Controllers
                 return UserAuthCode.WRONG_PASSWORD;
             }
             var user = UserService.getOne(email);
-            if(user == null)
+            if (user == null)
             {
                 return UserAuthCode.USER_NOT_EXISTS;
-            } else if(!Crypto.VerifyHashedPassword(user.Passwd, passwd))
+            }
+            else if (!Crypto.VerifyHashedPassword(user.Passwd, passwd))
             {
                 return UserAuthCode.WRONG_PASSWORD;
-            } else
+            }
+            else
             {
                 HttpContext.Session.SetInt32("user", user.IdClient);
                 return UserAuthCode.SUCCESS;
@@ -90,7 +91,8 @@ namespace AutolibASPCore.Controllers
             {
                 HttpContext.Session.Remove("redirectUrl");
                 return Redirect(redirectUrl);
-            } else
+            }
+            else
             {
                 return RedirectToAction(controllerName: "Home", actionName: "Index");
             }
@@ -121,13 +123,14 @@ namespace AutolibASPCore.Controllers
             {
                 return UserAuthCode.USER_ALREADY_EXISTS;
             }
-            
+
             var passwdHash = Crypto.HashPassword(passwd);
             DateTime? birthdateParsed = null;
             try
             {
                 birthdateParsed = DateTime.Parse(birthdate);
-            } catch(FormatException)
+            }
+            catch (FormatException)
             {
                 return UserAuthCode.NO_BIRTHDATE;
             }
@@ -137,3 +140,4 @@ namespace AutolibASPCore.Controllers
         }
     }
 }
+
