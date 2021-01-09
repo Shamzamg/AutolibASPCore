@@ -16,7 +16,7 @@ namespace AutolibASPCore.Controllers
         {
             if (HttpContext.Session.GetInt32("user") == null)
             {
-                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reserve", action: "Station", values: new {  }));
+                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reservation", action: "Index", values: new {  }));
                 return RedirectToAction(controllerName: "User", actionName: "Login");
             }
 
@@ -28,7 +28,7 @@ namespace AutolibASPCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(List<ReservationInfo> reservations, int idClient, int idBorneDepart, int idVehicule)
+        public IActionResult Index(int idClient, int idBorneDepart, int idVehicule)
         {
             if (HttpContext.Session.GetInt32("user") == null)
             {

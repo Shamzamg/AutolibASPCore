@@ -342,7 +342,7 @@ INSERT INTO `type_vehicule` (`idType_vehicule`, `categorie`, `type_vehicule`, `i
 (1, 'Petite citadine', 'Citroën C1', '/images/citroenc1.png'),
 (2, 'Petite citadine', 'Toyota Aygo', '/images/toyotaaygo.png'),
 (3, 'Utilitaire', 'Citroën Berlingo', '/images/citroenberlingo.png'),
-(4, 'Utilitaire', 'Citroën Berlingo PRM', '/images/citroenberlingo.png'),
+(4, 'Utilitaire', 'Citroën Berlingo PRM', '/images/citroenberlingoprm.png'),
 (5, 'Utilitaire', 'Nissan Evalia', '/images/nissanevalia.png'),
 (6, 'Compacte', 'Toyota Yaris', '/images/toyotayaris.png'),
 (7, 'Familliale', 'C4 Picasso', '/images/c4picasso.png'),

@@ -12,14 +12,6 @@ namespace AutolibASPCore.Controllers
 {
     public class ReserveController : Controller
     {
-        /*
-        public IActionResult StationsList()
-        {
-            List<Station> listeStations = ReserveService.getStationsLibres();
-
-            return View(listeStations);
-        }
-        */
         public IActionResult Station(int id)
         {
             if(HttpContext.Session.GetInt32("user") == null)
@@ -47,18 +39,14 @@ namespace AutolibASPCore.Controllers
 
             return View(vehiculesFiltered);
         }
-        public IActionResult Reserve()
-        {
-            return View();
-        }
-
 
         [HttpPost]
         public IActionResult Car(string dateArrivee, string dateDepart, int vehiculeID)
         {
             if (HttpContext.Session.GetInt32("user") == null)
             {
-                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reserve", action: "Station", values: new { }));
+                int id = vehiculeID;
+                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reserve", action: "Car", values: new {id}));
                 return RedirectToAction(controllerName: "User", actionName: "Login");
             }
 
@@ -86,7 +74,7 @@ namespace AutolibASPCore.Controllers
         {
             if (HttpContext.Session.GetInt32("user") == null)
             {
-                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reserve", action: "Station", values: new {  }));
+                HttpContext.Session.SetString("redirectUrl", Url.Action(controller: "Reserve", action: "Car", values: new {id}));
                 return RedirectToAction(controllerName: "User", actionName: "Login");
             }
 

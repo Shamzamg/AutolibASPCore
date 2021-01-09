@@ -14,8 +14,9 @@
             <a href="@Url.Action("Car","Reserve", new { id = v.IdVehicule })" id="@v.IdVehicule">
                 <img src="@Url.Content(v.ImageVehicule)" />
             </a>
-            <div class="carousel-image-title">
+            <div class="carousel-image-title text-center">
                 <h5>@v.TypeVehicule</h5>
+                <h6>@v.Categorie</h6>
             </div>
         </div>
         }

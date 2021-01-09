@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using AutolibASPCore.Models.Dao;
 using AutolibASPCore.Models.Domain;
 
 namespace AutolibASPCore.Controllers
@@ -20,7 +21,8 @@ namespace AutolibASPCore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<TypeVehicule> vehicules = HomeService.getAllVehicules();
+            return View(vehicules);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
