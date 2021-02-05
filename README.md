@@ -9,7 +9,7 @@ Le projet a été réalisé par GUILLET Theodore, ZIANI Shamsdine
 #### Il faut cloner le repository dans le répertoire voulu
 
 ```
-git clone https://forge.univ-lyon1.fr/p1808309/autolibaspcore/ FOLDER_NAME
+git clone https://github.com/Shamzamg/AutolibASPCore/ FOLDER_NAME
 ```
 
 #### Mettre en place la base de données
